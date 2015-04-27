@@ -1,62 +1,25 @@
-app.gameFunctionality = function() {
+console.log($('#' + 1).text());
 
-    if (app.gameBegan === true) {
-        location.reload()
-    }
+app.spotArray = ['','','','','','','','',''];
 
-    app.gameBegan = true;
+var clickedBlock;
 
-    var blocks = $('.game-block');
+console.log('test');
 
-    function styleOs() {
-        for (var i = blocks.length - 1; i >= 0; i--) {
-            if (blocks[i].innerHTML === 'O') {
-                blocks[i].style.paddingRight = 2 + '%'
-                blocks[i].style.paddingLeft = 0 + '%'
-            }
-        };
-    }
+app.placeMove = function (num) {
+    
+    app.spotArray.splice(num,0,'X');
+    // app.spotArray.push(block.attr('id'));
+    clickedBlock = num;
+    // app.spotArray = app.spotArray.sort();
+    console.log(app.spotArray[num]);
+    return app.spotArray[num];
+}
 
-    var randomNum = Math.random();
+$('.game-block').on('click', function() {
+	var block = $(this);
+	block.html('X');
+    app.placeMove(block.attr('id'));
+});
 
-    if (randomNum >= .5) {
-        $('.first-heading').html('Computer goes first');
-        window.setTimeout(function() {
-            $('.game-block-first').html('O');
-            styleOs();
-        }, 1000);
-    } else {
-        $('.first-heading').html('You go first');
-    }
-
-    function computerMove(id) {
-        id = Number(id);
-        $('.game-blocker-checkbox').prop('checked', true);
-        window.setTimeout(function() {
-            app.computerReact(id);
-            $('.game-blocker-checkbox').prop('checked', false);
-            app.checkWin();
-            styleOs();
-        }, 1000);
-    }
-
-    app.moves = [];
-    app.turnCount = 0;
-
-    $('.game-block').on('click', function() {
-        var block = $(this);
-        app.stoppage = false;
-        app.humanMove = false;
-        app.randomDone = true;
-        styleOs;
-        if (block.html() === '') {
-            app.turnCount += 1;
-            block.html('X');
-            app.checkWin();
-            computerMove(block.attr('id'));
-        } else {
-            console.log('spot already taken');
-        }
-    });
-
-};
+app.placeMove();
