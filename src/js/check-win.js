@@ -8,6 +8,13 @@ app.checkWin = function (num1, num2, num3) {
 
 	if (arr(num1) === arr(num2) && arr(num2) === arr(num3)) {
 		console.log('yes');
+		app.emptyArray();
 		return true;
+	} else {
+		return false;
 	}
 };
+
+app.emptyArray = function () {
+	app.spotArray = ['','','','','','','','',''];
+}
