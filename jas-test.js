@@ -28,22 +28,59 @@ describe("game", function() {
 	    	app.placeXMove(0);
 	    	app.placeXMove(1);
 	    	app.placeXMove(2);
-	    	expect(app.checkWin(0,1,2)).toBeTruthy();
+	    	expect(app.checkWin()).toBeTruthy();
 	    });
 
-	    it("a diagonal has 3 x's", function() {
+	    it("if there are 3 X's but not in a row, it should return falsy", function() {
 	    	app.placeXMove(0);
+	    	app.placeXMove(1);
 	    	app.placeXMove(4);
-	    	app.placeXMove(8);
-	    	expect(app.checkWin(0,4,8)).toBeTruthy();
+	    	expect(app.checkWin()).toBeFalsy();
 	    });
 
-	    it("a column has 3 O's", function() {
-	    	app.placeOMove(0);
-	    	app.placeOMove(3);
-	    	app.placeOMove(6);
-	    	expect(app.checkWin(0,3,6)).toBeTruthy();
-	    });
+	    // function send3Back (i, j, k) {
+	    // 	return ((i !== j) && (j !== k) && (i !== k)) && ((app.spotArray[i] !== '') && (app.spotArray[j] !== '') && (app.spotArray[k] !== ''));
+	    // }
+
+	    // it("if any set of 3 X's in a row matchup and return checkWin as truthy", function() {
+	    // 	for (var i = 8; i >= 0; i--) {
+	    // 		app.placeXMove(i);
+	    // 		for (var j = 8; j >= 0; j--) {
+		   //  		app.placeXMove(j);
+		   //  		for (var k = 8; k >= 0; k--) {
+			  //   		app.placeXMove(k);
+			  //   		if (send3Back(i,j,k)) {
+			  //   			expect(app.checkWin(i,j,k)).toBeTruthy();
+			  //   			app.spotArray.splice(k,1,'');
+			  //   		} else if (k !== j && k !== i) {
+			  //   			app.spotArray.splice(k,1,'');
+			  //   		}
+			  //   	};
+			  //   	app.spotArray.splice(j,1,'');
+		   //  	};
+		   //  	app.spotArray.splice(i,1,'');
+	    // 	};
+	    // });
+
+	    // it("if any set of 3 X's in a row matchup and return checkWin as truthy", function() {
+	    // 	for (var i = 8; i >= 0; i--) {
+	    // 		app.placeOMove(i);
+	    // 		for (var j = 8; j >= 0; j--) {
+		   //  		app.placeOMove(j);
+		   //  		for (var k = 8; k >= 0; k--) {
+			  //   		app.placeOMove(k);
+			  //   		if (send3Back(i,j,k)) {
+			  //   			expect(app.checkWin(i,j,k)).toBeTruthy();
+			  //   			app.spotArray.splice(k,1,'');
+			  //   		} else if (k !== j && k !== i) {
+			  //   			app.spotArray.splice(k,1,'');
+			  //   		}
+			  //   	};
+			  //   	app.spotArray.splice(j,1,'');
+		   //  	};
+		   //  	app.spotArray.splice(i,1,'');
+	    // 	};
+	    // });
 	});
 
 	describe("make the computer counter two x's in a row with a O", function() {
@@ -63,15 +100,24 @@ describe("game", function() {
 	    	expect(app.spotArray[2]).toBe('O');
 	    });
 
-	    it("with any 2 spaces occupied with an X that are in a position of winning, block move with an O", function() {
+	    it("see if a diagonal does the same as the one at top", function() {
 	    	app.placeXMove(2);
 	    	app.placeXMove(4);
 	    	// spyOn(app.counterWin, "app.placeOMove");
 	    	expect(app.spotArray[6]).toBe('O');
 	    });
 
+	    it("with any 2 spaces occupied with an X that are in a position of winning, block move with an O", function() {
+
+	    });
+
 	});
+
+	
 });
+
+// to test:
+// -see check to see if ANY three in a row match
 
 
 

@@ -7,17 +7,17 @@ app.game = function () {
 	console.log($('.game-block'));
 
 	app.placeXMove = function (num) {
-	    app.spotArray.splice(num,0,'X');
+	    app.spotArray.splice(num,1,'X');
 	    clickedBlock = num;
-	    console.log(app.spotArray[num]);
-	    app.counterWin();
+	    // console.log(app.spotArray[num]);
+	    // app.counterWin();
 	    return app.spotArray[num];
 	}
 
 	app.placeOMove = function (num) {
-	    app.spotArray.splice(num,0,'O');
+	    app.spotArray.splice(num,1,'O');
 	    clickedBlock = num;
-	    console.log(app.spotArray[num]);
+	    // console.log(app.spotArray[num]);
 	    block = $('#' + (num + 1));
 	    block.html('O');
 	    return app.spotArray[num];
@@ -49,16 +49,3 @@ app.game = function () {
 
 app.game();
 
-function prettyDate(now, time){
-    var date = new Date(time || ""),
-        diff = (((new Date(now)).getTime() - date.getTime()) / 1000),
-        day_diff = Math.floor(diff / 86400);
-
-    if (isNaN(day_diff) || day_diff < 0 || day_diff >= 31) {
-        return;
-    }
-
-    return diff < 86400 && Math.floor( diff / 3600 ) + " hours ago";
-}
-
-console.log(prettyDate("2008-01-28T22:25:00Z", "2008-01-28T20:24:17Z"));

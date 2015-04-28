@@ -1,18 +1,33 @@
-app.checkWin = function (num1, num2, num3) {
+app.checkWin = function () {
 	function arr (i) {
 		return app.spotArray[i];
 	}
-	console.log(arr(num1))
-	console.log(arr(num2))
-	console.log(arr(num3))
 
-	if (arr(num1) === arr(num2) && arr(num2) === arr(num3)) {
-		console.log('yes');
-		app.emptyArray();
-		return true;
-	} else {
-		return false;
-	}
+	function checkThree(num, param) {
+        var idNum = app.spotArray[num];
+        var idNumLess = app.spotArray[num - param];
+        var idNumMore = app.spotArray[num + param];
+        if ((idNum === idNumLess) && (idNum === idNumMore) && (idNum !== '')) {
+            function changeColor(el) {
+                el.css({
+                    'background': 'white',
+                    'color': '#EB1767'
+                });
+            };
+            num += 1;
+            changeColor($('#' + num));
+            changeColor($('#' + (num - param)));
+            changeColor($('#' + (num + param)));
+            return true;
+        }
+    }
+
+    if (checkThree(1, 1) || checkThree(4, 1) || checkThree(7, 1) || checkThree(3, 3) || checkThree(4, 1) || checkThree(4, 3) || checkThree(7, 3) || checkThree(4, 4) || checkThree(4, 2)) {
+        return true;
+    } else {
+    	return false;
+    }
+
 };
 
 app.emptyArray = function () {
