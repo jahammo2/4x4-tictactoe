@@ -23,6 +23,7 @@ app.checkWin = function () {
     }
 
     if (checkThree(1, 1) || checkThree(4, 1) || checkThree(7, 1) || checkThree(3, 3) || checkThree(4, 1) || checkThree(4, 3) || checkThree(7, 3) || checkThree(4, 4) || checkThree(4, 2)) {
+        // game end functionality
         return true;
     } else {
     	return false;

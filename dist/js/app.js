@@ -27,6 +27,7 @@ app.checkWin = function () {
     }
 
     if (checkThree(1, 1) || checkThree(4, 1) || checkThree(7, 1) || checkThree(3, 3) || checkThree(4, 1) || checkThree(4, 3) || checkThree(7, 3) || checkThree(4, 4) || checkThree(4, 2)) {
+        // game end functionality
         return true;
     } else {
     	return false;
@@ -38,12 +39,11 @@ app.emptyArray = function () {
 	app.spotArray = ['','','','','','','','',''];
 }
 app.counterWin = function () {
-	console.log(app.spotArray);
 	var arr = app.spotArray;
-	// if (arr[0] === 'X' && arr[1] === 'X') {
-	// 	console.log('worked');
-	// 	app.placeOMove(2);
-	// }
+	if (arr[0] === 'X' && arr[1] === 'X') {
+		console.log('worked');
+		app.placeOMove(2);
+	}
 
 	return false;
 };
@@ -78,7 +78,8 @@ app.game = function () {
 	    app.spotArray.splice(num,1,'X');
 	    clickedBlock = num;
 	    // console.log(app.spotArray[num]);
-	    // app.counterWin();
+	    app.checkWin();
+	    app.counterWin();
 	    return app.spotArray[num];
 	}
 
@@ -88,6 +89,7 @@ app.game = function () {
 	    // console.log(app.spotArray[num]);
 	    block = $('#' + (num + 1));
 	    block.html('O');
+	    app.checkWin();
 	    return app.spotArray[num];
 	}
 

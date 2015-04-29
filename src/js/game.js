@@ -10,7 +10,8 @@ app.game = function () {
 	    app.spotArray.splice(num,1,'X');
 	    clickedBlock = num;
 	    // console.log(app.spotArray[num]);
-	    // app.counterWin();
+	    app.checkWin();
+	    app.counterWin();
 	    return app.spotArray[num];
 	}
 
@@ -20,6 +21,7 @@ app.game = function () {
 	    // console.log(app.spotArray[num]);
 	    block = $('#' + (num + 1));
 	    block.html('O');
+	    app.checkWin();
 	    return app.spotArray[num];
 	}
 

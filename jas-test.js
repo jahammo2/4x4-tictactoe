@@ -5,10 +5,6 @@ describe("game", function() {
 
 	describe("creating a move", function() {
 	    it("top left has an x", function() {
-	    	// waitsFor(function() {
-	    	// 	app.placeXMove();
-	    	// },"failed",999999999999);
-	    	// app.placeXMove(0);
 	    	expect(app.placeXMove(0)).toBe('X');
 	    });
 
@@ -38,49 +34,20 @@ describe("game", function() {
 	    	expect(app.checkWin()).toBeFalsy();
 	    });
 
-	    // function send3Back (i, j, k) {
-	    // 	return ((i !== j) && (j !== k) && (i !== k)) && ((app.spotArray[i] !== '') && (app.spotArray[j] !== '') && (app.spotArray[k] !== ''));
-	    // }
+	    it("the first column has 3 x's", function() {
+	    	app.placeXMove(0);
+	    	app.placeXMove(3);
+	    	app.placeXMove(6);
+	    	expect(app.checkWin()).toBeTruthy();
+	    });
 
-	    // it("if any set of 3 X's in a row matchup and return checkWin as truthy", function() {
-	    // 	for (var i = 8; i >= 0; i--) {
-	    // 		app.placeXMove(i);
-	    // 		for (var j = 8; j >= 0; j--) {
-		   //  		app.placeXMove(j);
-		   //  		for (var k = 8; k >= 0; k--) {
-			  //   		app.placeXMove(k);
-			  //   		if (send3Back(i,j,k)) {
-			  //   			expect(app.checkWin(i,j,k)).toBeTruthy();
-			  //   			app.spotArray.splice(k,1,'');
-			  //   		} else if (k !== j && k !== i) {
-			  //   			app.spotArray.splice(k,1,'');
-			  //   		}
-			  //   	};
-			  //   	app.spotArray.splice(j,1,'');
-		   //  	};
-		   //  	app.spotArray.splice(i,1,'');
-	    // 	};
-	    // });
+	    it("the first diagonal has 3 x's", function() {
+	    	app.placeXMove(0);
+	    	app.placeXMove(4);
+	    	app.placeXMove(8);
+	    	expect(app.checkWin()).toBeTruthy();
+	    });
 
-	    // it("if any set of 3 X's in a row matchup and return checkWin as truthy", function() {
-	    // 	for (var i = 8; i >= 0; i--) {
-	    // 		app.placeOMove(i);
-	    // 		for (var j = 8; j >= 0; j--) {
-		   //  		app.placeOMove(j);
-		   //  		for (var k = 8; k >= 0; k--) {
-			  //   		app.placeOMove(k);
-			  //   		if (send3Back(i,j,k)) {
-			  //   			expect(app.checkWin(i,j,k)).toBeTruthy();
-			  //   			app.spotArray.splice(k,1,'');
-			  //   		} else if (k !== j && k !== i) {
-			  //   			app.spotArray.splice(k,1,'');
-			  //   		}
-			  //   	};
-			  //   	app.spotArray.splice(j,1,'');
-		   //  	};
-		   //  	app.spotArray.splice(i,1,'');
-	    // 	};
-	    // });
 	});
 
 	describe("make the computer counter two x's in a row with a O", function() {
