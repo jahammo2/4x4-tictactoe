@@ -1,17 +1,20 @@
 {
   "name": "jasmine-core",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "homepage": "http://jasmine.github.io",
   "authors": [
     "slackersoft <gregg@slackersoft.net>"
   ],
   "description": "Official packaging of Jasmine's core files",
   "keywords": [
+    "test",
     "jasmine",
+    "tdd",
     "bdd"
   ],
   "license": "MIT",
   "moduleType": "globals",
+  "main": "lib/jasmine-core.js",
   "ignore": [
     "**/.*",
     "dist",
@@ -35,14 +38,14 @@
     "lib/jasmine-core/*.py",
     "sauce_connect.log"
   ],
-  "_release": "2.2.1",
+  "_release": "2.3.0",
   "_resolution": {
     "type": "version",
-    "tag": "v2.2.1",
-    "commit": "e173cd1c9dbd1ec829d03c29d1c8528982c289f4"
+    "tag": "v2.3.0",
+    "commit": "21c90bf15f4b6652adf9b2243015a6eb79045c40"
   },
   "_source": "git://github.com/pivotal/jasmine.git",
-  "_target": "~2.2.1",
+  "_target": "~2.3.0",
   "_originalSource": "jasmine",
   "_direct": true
 }

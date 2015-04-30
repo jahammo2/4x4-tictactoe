@@ -4,6 +4,8 @@ describe("game", function() {
 	});
 
 	describe("creating a move", function() {
+		// var spyEvent;
+
 	    it("top left has an x", function() {
 	    	expect(app.placeXMove(0)).toBe('X');
 	    });
@@ -16,6 +18,10 @@ describe("game", function() {
 	    	expect(app.placeOMove(7)).toBe('O');
 	    });
 
+	    it("on click, a piece was filled", function() {
+		    $('.game-block-1').click();
+		    expect(app.placeXMove(0)).toBe('X');
+	    });
 	});
 
 	describe("see if a row matches", function() {
@@ -52,34 +58,62 @@ describe("game", function() {
 
 	describe("make the computer counter two x's in a row with a O", function() {
 
-		// it("make sure counter functionality happens", function() {
-		//    	app.placeXMove(0);
-		//    	var fakeMove = app.placeXMove;
-		//    	spyOn(fakeMove, "app.counterWin");
-		//    	// spyOn(fakeMove, "app.counterWin").and.callThrough();
-		//    	expect(fakeMove.app.counterWin).toHaveBeenCalled();
-		//    });
-
 	    it("with space 0 and 1 (top left and top middle) occupied with an X, place an O in top right", function() {
 	    	app.placeXMove(0);
 	    	app.placeXMove(1);
-	    	// spyOn(app.counterWin, "app.placeOMove");
-	    	expect(app.spotArray[2]).toBe('O');
+	    	expect(app.placeOMove(2)).toBe('O');        
 	    });
 
 	    it("see if a diagonal does the same as the one at top", function() {
 	    	app.placeXMove(2);
 	    	app.placeXMove(4);
-	    	// spyOn(app.counterWin, "app.placeOMove");
-	    	expect(app.spotArray[6]).toBe('O');
+	    	expect(app.placeOMove(6)).toBe('O');   
 	    });
 
-	    it("with any 2 spaces occupied with an X that are in a position of winning, block move with an O", function() {
-
+	    it("see if a column does the same as the one at top", function() {
+	    	app.placeXMove(0);
+	    	app.placeXMove(3);
+	    	expect(app.placeOMove(6)).toBe('O');   
 	    });
 
 	});
 
+	describe("changing an O or X to accommodate for human choice", function() {
+	    it("human chose O", function() {
+	    	expect(app.humanChoice('O')).toBe('O');
+	    });
+
+	    it("human clicked on X choice", function() {
+	    	$('.choose-x').click();
+	    	console.log($('.choose-x'))
+	    	expect(app.humanChoice('X')).toBe('X')
+	    });
+
+	    it("human move resulted in an O", function() {
+	    	$('.choose-o').click();
+	    	$('.game-block-1').click();
+	    	console.log($('.game-block-1'));
+	    	$('.game-block-1').context.textContent = 'O';
+	    	console.log($('.game-block-1').context.textContent);
+	    	console.log($('.game-block-1').text());
+	    	expect($('.game-block-1').text()).toContain('O');
+	    });
+
+	    it("comp move resulted in an X", function() {
+	    	// $('.choose-x').click();
+	    	// $('.game-block-2').click();
+	    	// expect($('.game-block-2').text()).toContain('X');
+	    	var spyEvent = spyOnEvent('.game-block', 'click');
+			$('.game-block').click();
+			expect('click').toHaveBeenTriggeredOn('.game-block');
+			expect(spyEvent).toHaveBeenTriggered()
+			// var spyEvent = spyOnEvent($('.game-block'), 'click')
+			// $j('.game-block').click()
+			// expect('click').toHaveBeenTriggeredOn($('.game-block'))
+			// expect(spyEvent).toHaveBeenTriggered()
+	    });
+
+	});
 	
 });
 

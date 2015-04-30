@@ -3,22 +3,31 @@ app.game = function () {
 	app.spotArray = ['','','','','','','','',''];
 
 	var clickedBlock;
+console.log($('.game-block-1'))
+console.log($('.choose-x'))
+	app.gameOver = false;
+console.log($('.game-block-1').text());
+	app.hc;
 
-	console.log($('.game-block'));
+	app.humanChoice = function (val) {
+		console.log(val);
+		app.hc = val;
+		return val;
+	}
 
 	app.placeXMove = function (num) {
 	    app.spotArray.splice(num,1,'X');
 	    clickedBlock = num;
-	    // console.log(app.spotArray[num]);
 	    app.checkWin();
-	    app.counterWin();
+	    if (!app.gameOver) {
+	    	app.counterWin();
+	    }
 	    return app.spotArray[num];
 	}
 
 	app.placeOMove = function (num) {
 	    app.spotArray.splice(num,1,'O');
 	    clickedBlock = num;
-	    // console.log(app.spotArray[num]);
 	    block = $('#' + (num + 1));
 	    block.html('O');
 	    app.checkWin();
@@ -27,8 +36,9 @@ app.game = function () {
 
 	$('.game-block').on('click', function() {
 		var block = $(this);
-		block.html('X');
-	    app.placeXMove(block.attr('id'));
+		block.html(app.hc);
+	    app.placeXMove(block.attr('id') - 1);
+	    console.log($('.game-block-1').text());
 	});
 
 	var blocks = $('.game-block');
