@@ -39,14 +39,42 @@ app.checkWin = function () {
 app.emptyArray = function () {
 	app.spotArray = ['','','','','','','','',''];
 }
-app.counterWin = function () {
-	var arr = app.spotArray;
-	if (arr[0] === 'X' && arr[1] === 'X') {
-		app.placeOMove(2);
-		console.log(app.spotArray);
-	}
+app.comp = {
 
-	return false;
+	reactVal: false,
+
+	react: function (cc, hc) {
+		var arr = app.spotArray;
+		app.comp.reactVal = false;
+
+		app.comp.goForBlock(0,1,2,cc,hc);
+
+		return app.reactVal;
+	},
+
+	goForBlock: function (num, param1,param2,cc,hc) {
+		var block = app.spotArray[num];
+	    var block1 = app.spotArray[num + param1];
+	    var block2 = app.spotArray[num + param2];
+
+	    // console.log(app.spotArray);
+	    // console.log(app.spotArray[num]);
+	    // console.log(app.spotArray[num + param1]);
+	    // console.log(app.spotArray[num + param2]);
+
+		if (block === block1 && block === hc && block1 === hc && block2 === '') {
+	        app.comp.reactVal = num + param2;
+	    } else if (block === block2 && block === hc && block2 === hc && block1 === '') {
+	        app.comp.reactVal = num + param1;
+	    }
+
+	    if (app.reactVal !== false) {
+	    	return app.comp.reactVal;
+	    } else {
+	    	return false;
+	    }
+	}
+	
 };
 
 
@@ -67,6 +95,9 @@ app.counterWin = function () {
 
 
 
+app.lose = function () {
+	console.log('you lost')
+}
 app.game = function () {
 
 	app.spotArray = ['','','','','','','','',''];
@@ -89,29 +120,35 @@ app.game = function () {
 		return val;
 	}
 
-	app.placeXMove = function (num) {
-	    app.spotArray.splice(num,1,'X');
-	    clickedBlock = num;
-	    app.checkWin();
-	    if (!app.gameOver) {
-	    	app.counterWin();
-	    }
-	    return app.spotArray[num];
-	}
+	app.humanMove = function (num) {
+		app.placeMove(num, app.hc);
+		if (app.checkWin()) {
+			app.lose();
+		} else {
+			app.compMove(app.comp.react(app.cc, app.hc));
+		}
+		return num;
+	};
 
-	app.placeOMove = function (num) {
-	    app.spotArray.splice(num,1,'O');
-	    clickedBlock = num;
-	    block = $('#' + (num + 1));
-	    block.html('O');
-	    app.checkWin();
-	    return app.spotArray[num];
+	app.compMove = function (num) {
+		app.placeMove(num, app.cc);
+		if (app.checkWin()) {
+			app.lose();
+		}
+		return num;
+	};
+
+	app.placeMove = function (num, letter) {
+		app.spotArray.splice(num,1,letter);
+		block = $('#' + (num + 1));
+		block.html(letter);
+		return app.spotArray[num];
 	}
 
 	$('.game-block').on('click', function() {
 		var block = $(this);
 		block.html(app.hc);
-	    app.placeXMove(block.attr('id') - 1);
+	    app.humanMove(block.attr('id'));
 	});
 
 	var blocks = $('.game-block');

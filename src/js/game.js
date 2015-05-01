@@ -20,29 +20,35 @@ app.game = function () {
 		return val;
 	}
 
-	app.placeXMove = function (num) {
-	    app.spotArray.splice(num,1,'X');
-	    clickedBlock = num;
-	    app.checkWin();
-	    if (!app.gameOver) {
-	    	app.counterWin();
-	    }
-	    return app.spotArray[num];
-	}
+	app.humanMove = function (num) {
+		app.placeMove(num, app.hc);
+		if (app.checkWin()) {
+			app.lose();
+		} else {
+			app.compMove(app.comp.react(app.cc, app.hc));
+		}
+		return num;
+	};
 
-	app.placeOMove = function (num) {
-	    app.spotArray.splice(num,1,'O');
-	    clickedBlock = num;
-	    block = $('#' + (num + 1));
-	    block.html('O');
-	    app.checkWin();
-	    return app.spotArray[num];
+	app.compMove = function (num) {
+		app.placeMove(num, app.cc);
+		if (app.checkWin()) {
+			app.lose();
+		}
+		return num;
+	};
+
+	app.placeMove = function (num, letter) {
+		app.spotArray.splice(num,1,letter);
+		block = $('#' + (num + 1));
+		block.html(letter);
+		return app.spotArray[num];
 	}
 
 	$('.game-block').on('click', function() {
 		var block = $(this);
 		block.html(app.hc);
-	    app.placeXMove(block.attr('id') - 1);
+	    app.humanMove(block.attr('id'));
 	});
 
 	var blocks = $('.game-block');
