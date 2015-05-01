@@ -72,15 +72,20 @@ app.game = function () {
 	app.spotArray = ['','','','','','','','',''];
 
 	var clickedBlock;
-console.log($('.game-block-1'))
-console.log($('.choose-x'))
+
 	app.gameOver = false;
-console.log($('.game-block-1').text());
+
 	app.hc;
 
+	app.cc;
+
 	app.humanChoice = function (val) {
-		console.log(val);
 		app.hc = val;
+		if (val === 'X') {
+			app.cc = 'O';
+		} else {
+			app.cc = 'X';
+		}
 		return val;
 	}
 
@@ -107,7 +112,6 @@ console.log($('.game-block-1').text());
 		var block = $(this);
 		block.html(app.hc);
 	    app.placeXMove(block.attr('id') - 1);
-	    console.log($('.game-block-1').text());
 	});
 
 	var blocks = $('.game-block');
