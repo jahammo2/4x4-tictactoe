@@ -10,6 +10,14 @@ app.game = function () {
 
 	app.cc;
 
+	app.goFirst = function (player) {
+		app.firstMove = player;
+		if (player === 'comp') {
+			app.compMove(4);
+		}
+		return player;
+	}
+
 	app.humanChoice = function (val) {
 		app.hc = val;
 		if (val === 'X') {
@@ -47,8 +55,13 @@ app.game = function () {
 
 	$('.game-block').on('click', function() {
 		var block = $(this);
-		block.html(app.hc);
-	    app.humanMove(block.attr('id'));
+		var id = block.attr('id');
+		if (app.spotArray[id] === 'X' || app.spotArray[id] === 'O') {
+			console.log('cannot');
+		} else {
+			block.html(app.hc);
+	    	app.humanMove(id);
+		}
 	});
 
 	var blocks = $('.game-block');
@@ -62,7 +75,15 @@ app.game = function () {
 	    };
 	}
 
-
+	app.checkArrAmounts = function () {
+		var amt = 0;
+		for (var i = app.spotArray.length - 1; i >= 0; i--) {
+			if (app.spotArray[i] === 'X' || app.spotArray[i] === 'O') {
+				amt ++;
+			}
+		};
+		return amt;
+	}
 
 
 
