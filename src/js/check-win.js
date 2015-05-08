@@ -19,7 +19,7 @@ app.checkWin = function () {
             changeColor($('#' + (num - param - 1)));
             changeColor($('#' + (num + param - 1)));
             console.log('win');
-            //app.lose();
+            app.lose();
             return true;
         }
     }
