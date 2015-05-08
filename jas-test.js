@@ -4,6 +4,7 @@ describe("game", function() {
 		app.gameOver = false;
 		app.hc = 'X';
 		app.cc = 'O';
+    app.game();
 	});
 
 	describe('see if a move was placed', function() {
@@ -76,6 +77,7 @@ describe("game", function() {
 	    	app.placeMove(2, 'O');
 	    	expect(app.checkWin()).toBeTruthy();
 	    });
+
 	});
 
 	describe("changing an O or X to accommodate for human choice", function() {
@@ -187,11 +189,6 @@ describe("game", function() {
 	});
 
 	describe('computer wants to win', function() {
-
-		// it('should change to computers move after human move', function() {
-		// 	app.humanMove(2);
-		// 	expect(app.compTurn).toBe(true);
-		// });
 
 		it('if there are two computer moves already in a row and it is the comps turn, the comp should fill the third spot. In this case, two comp moves at position 0 and 1, it will try to get pos 2', function() {
 			app.cc = 'O';
@@ -408,60 +405,8 @@ describe("game", function() {
 
 	});
 
-	// describe('order of functions', function() {
-
-	// 	it('should call app.comp.smartMove() if there is no chance to win or block', function() {
-	// 		app.humanChoice('X');
-	// 		////////////////['0', '1','2','3','4','5','6','7','8']
-	// 		app.spotArray = ['', '', '', '', 'O', '', '', 'X', ''];
-	// 		var fakeSpy = new app.comp.react(app.cc,app.hc);
-	// 		fakeSpy.app.comp.smartMove = jasmine.createSpy("Say-hello spy");
-	// 		app.humanMove(0);
-	//         expect(fakeSpy.app.comp.smartMove).toHaveBeenCalled();
-	// 	});
-		
-	// });
-
 });
 
 // to test:
 // -see check to see if ANY three in a row match
 // -game doesn't end before all 9 spaces are taken up or 3 in a row
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

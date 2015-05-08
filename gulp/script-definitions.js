@@ -9,9 +9,5 @@ module.exports = {
 
   vendor: [
     'bower_components/jquery/dist/jquery.js',
-    'bower_components/jasmine/lib/jasmine-core/jasmine.js',
-	'bower_components/jasmine/lib/jasmine-core/jasmine-html.js',
-	'bower_components/jasmine/lib/jasmine-core/boot.js',
-	'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
   ]
 };

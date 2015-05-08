@@ -19,9 +19,11 @@ app.checkWin = function () {
                 });
             };
             num += 1;
-            changeColor($('#' + num));
-            changeColor($('#' + (num - param)));
-            changeColor($('#' + (num + param)));
+            changeColor($('#' + (num - 1)));
+            changeColor($('#' + (num - param - 1)));
+            changeColor($('#' + (num + param - 1)));
+            console.log('win');
+            //app.lose();
             return true;
         }
     }
@@ -30,15 +32,34 @@ app.checkWin = function () {
         // game end functionality
         app.gameOver = true;
         return true;
+    } else if (checkBlocks()) {
+        app.catScan();
+        return false;
     } else {
     	return false;
     }
+    function checkBlocks() {
+        var counter = 0;
+        for (var i = app.spotArray.length - 1; i >= 0; i--) {
+            if (app.spotArray[i] !== '') {
+                counter += 1;
+            }
+        };
+        if (counter === 9) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 
 };
 
 app.emptyArray = function () {
 	app.spotArray = ['','','','','','','','',''];
 }
+
 app.comp = {
 
 	reactVal: false,
@@ -191,8 +212,20 @@ app.comp = {
 
 
 app.lose = function () {
-	console.log('you lost')
+  endGame('.lost-heading');
 }
+function endGame(el) {
+    $(el).animate({
+        'margin-left': '-100%'
+    }, 5000, function() {
+        location.reload();
+    });
+    $('.game-blocker-checkbox').prop('checked', true);
+}
+app.catScan = function () {
+  endGame('.cat-heading');
+}
+
 app.game = function () {
 
 	app.spotArray = ['','','','','','','','',''];
@@ -207,9 +240,7 @@ app.game = function () {
 
 	app.goFirst = function (player) {
 		app.firstMove = player;
-		if (player === 'comp') {
-			app.compMove(4);
-		}
+		
 		return player;
 	}
 
@@ -220,13 +251,16 @@ app.game = function () {
 		} else {
 			app.cc = 'X';
 		}
+    if (app.firstMove === 'comp') {
+			app.compMove(4);
+		}
 		return val;
 	}
 
 	app.humanMove = function (num) {
 		app.placeMove(num, app.hc);
 		if (app.checkWin()) {
-			app.lose();
+			// app.lose();
 		} else {
 			app.compMove(app.comp.react(app.cc, app.hc));
 		}
@@ -234,16 +268,16 @@ app.game = function () {
 	};
 
 	app.compMove = function (num) {
-		app.placeMove(num, app.cc);
+    computerMove(num);
 		if (app.checkWin()) {
-			app.lose();
+		//	app.lose();
 		}
 		return num;
 	};
 
 	app.placeMove = function (num, letter) {
 		app.spotArray.splice(num,1,letter);
-		block = $('#' + (num + 1));
+		block = $('#' + (num));
 		block.html(letter);
 		return app.spotArray[num];
 	}
@@ -252,9 +286,9 @@ app.game = function () {
 		var block = $(this);
 		var id = block.attr('id');
 		if (app.spotArray[id] === 'X' || app.spotArray[id] === 'O') {
-			console.log('cannot');
 		} else {
 			block.html(app.hc);
+			console.log(block);
 	    	app.humanMove(id);
 		}
 	});
@@ -280,12 +314,25 @@ app.game = function () {
 		return amt;
 	}
 
+  function computerMove(num) {
+      $('.game-blocker-checkbox').prop('checked', true);
+    //  window.setTimeout(function() {
+        app.placeMove(num, app.cc);
+        $('.game-blocker-checkbox').prop('checked', false);
+        styleOs();
+       // app.checkWin()
+      //}, 1000);
+  }
 
-
+  $('.choose-first li').on('click', function () {
+    $('.checkbox-choice').prop('checked', true);
+  });
+  $('.legend li').on('click', function () {
+    $('.checkbox-first').prop('checked', true);
+  });
 
 };
 
-app.game();
 
 
 /*! jQuery v2.1.3 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */

@@ -9,23 +9,29 @@
     <input type="checkbox" class="game-blocker-checkbox">
     <div class="game-blocker"></div>
     <div class="header">
-      <input id="checkbox-heading" class="heading checkbox-heading" type="checkbox">
-      <div onclick="app.gameFunctionality()" class="heading begin-div">
+      <input id="checkbox-heading" class="checkbox checkbox-heading" type="checkbox">
+      <input id="checkbox-choice" class="checkbox checkbox-choice" type="checkbox">
+      <input id="checkbox-first" class="checkbox checkbox-first" type="checkbox">
+      <div onclick="app.game()" class="heading begin-div">
         <label for="checkbox-heading" class="play-button">Play</label>
       </div>
-      <p>Who goes first?</p>
-      <ul class="heading legend">
-        <li class="go-first" onclick="app.goFirst('human')">Human</li>
-        <li class="go-second" onclick="app.goFirst('comp')">Computer</li>
-      </ul>
+      <div class="first-heading choice-heading heading">
+        <div class="choose-div">
+          <p class="first-p">Who goes first?</p>
+          <ul class="choose-first">
+            <li class="go-first" onclick="app.goFirst('human')">Human</li>
+            <li class="go-second" onclick="app.goFirst('comp')">Computer</li>
+          </ul>
+        </div>
+      
+        <ul class="legend">
+          <li class="choose-o" onclick="app.humanChoice('O')">Choose O</li>
+          <li class="choose-x" onclick="app.humanChoice('X')">Choose X</li>
+        </ul>
+      </div>
       <h4 onclick="location.reload()" class="heading reset">reset</h4>
-      <h2 class="heading first-heading">fas</h2>
       <h1 class="heading game-end lost-heading">You Lose!</h1>
       <h1 class="heading game-end cat-heading">Cat Scan!</h1>
-      <ul class="heading legend">
-        <li class="choose-o" onclick="app.humanChoice('O')">Choose O</li>
-        <li class="choose-x" onclick="app.humanChoice('X')">Choose X</li>
-      </ul>
     </div>
     <ul class="board">
       <div class="bottom-div"></div>

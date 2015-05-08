@@ -15,9 +15,11 @@ app.checkWin = function () {
                 });
             };
             num += 1;
-            changeColor($('#' + num));
-            changeColor($('#' + (num - param)));
-            changeColor($('#' + (num + param)));
+            changeColor($('#' + (num - 1)));
+            changeColor($('#' + (num - param - 1)));
+            changeColor($('#' + (num + param - 1)));
+            console.log('win');
+            //app.lose();
             return true;
         }
     }
@@ -26,9 +28,27 @@ app.checkWin = function () {
         // game end functionality
         app.gameOver = true;
         return true;
+    } else if (checkBlocks()) {
+        app.catScan();
+        return false;
     } else {
     	return false;
     }
+    function checkBlocks() {
+        var counter = 0;
+        for (var i = app.spotArray.length - 1; i >= 0; i--) {
+            if (app.spotArray[i] !== '') {
+                counter += 1;
+            }
+        };
+        if (counter === 9) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 
 };
 
