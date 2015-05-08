@@ -1,0 +1,60 @@
+{
+  "dependencies": {
+    "body-parser": "^1.10.1",
+    "colors": "^1.0.3",
+    "cookie-parser": "^1.3.3",
+    "del": "^1.1.1",
+    "dotenv": "^0.4.0",
+    "everyauth": "^0.4.9",
+    "express": "^4.11.0",
+    "express-session": "^1.10.1",
+    "glob": "^4.3.2",
+    "nedb": "^1.1.1",
+    "q": "^1.1.2",
+    "require-dir": "^0.1.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-add-src": "^0.2.0",
+    "gulp-autoprefixer": "^2.0.0",
+    "gulp-concat": "^2.4.3",
+    "gulp-develop-server": "^0.2.5",
+    "gulp-ejs": "^1.0.0",
+    "gulp-gh-pages": "^0.4.0",
+    "gulp-hash-src": "0.0.2",
+    "gulp-if": "^1.2.5",
+    "gulp-jshint": "^1.9.0",
+    "gulp-livereload": "^3.7.0",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-minify-html": "^0.1.8",
+    "gulp-sass": "^1.2.4",
+    "gulp-sourcemaps": "^1.3.0",
+    "gulp-uglify": "^1.0.2",
+    "merge-stream": "^0.1.6",
+    "minimatch": "^2.0.1",
+    "monocle": "^1.1.51"
+  },
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jahammo2/unbeatable-tic-tac-toe.git"
+  },
+  "author": "jahammo2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jahammo2/unbeatable-tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/jahammo2/unbeatable-tic-tac-toe",
+  "name": "tic-tac-toe",
+  "description": "Pretty simple, I have to make it so you can't beat it",
+  "version": "1.0.0",
+  "keywords": [
+    "heroku"
+  ]
+}

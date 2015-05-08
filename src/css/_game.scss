@@ -1,0 +1,183 @@
+/////////////////////////////////////////////////////////////
+// GENERAL
+/////////////////////////////////////////////////////////////
+
+body, html, .game-blocker {
+	width: 100%;
+	height: 100%
+}
+.game-blocker {
+	position: absolute;
+	z-index: -1;
+	display: none;
+	background: transparent
+}
+.header {
+	position: relative;
+	width: 100%;
+	height: 40px
+}
+.game-blocker-checkbox {
+	visibility: hidden;
+	position: absolute
+}
+.game-blocker-checkbox:checked ~ .game-blocker {
+	z-index: 1;
+	display: block;
+	background: transparent
+}
+body {
+	background: #EB1767;
+	color: white;
+	//overflow: hidden;
+}
+.heading {
+	position: absolute;
+}
+.reset {
+	right: 27px;
+	top: 21px;
+	cursor: pointer;
+	font-weight: 500;
+}
+.reset:hover {
+	border-bottom: 2px solid white
+}
+/////////////////////////////////////////////////////////////
+// BLOCKS
+/////////////////////////////////////////////////////////////
+.board {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 400px;
+	height: 400px;
+	margin: 160px auto;
+	background: white;
+	position: relative;
+	font-size: 100px
+}
+.game-block {
+	width: 30%;
+	height: 100px;
+	background: #EB1767;
+	padding: 1% .75% 1% 1.25%;
+	padding-top: 22px
+}
+.game-block::first-letter {
+	margin-left: 25px;
+	vertical-align: text-bottom
+}
+.bottom-div {
+	position: absolute;
+	background: #EB1767;
+	height: 14px;
+	width: 100%;
+	bottom: 0
+}
+.legend {
+  visibility: hidden;
+	top: 21px;
+	left: 27px;
+  li {
+    &:hover {
+      border-bottom: 2px solid white;
+      cursor: pointer;
+    }
+  }
+}
+.begin-div, .first-heading {
+	top: 40px;
+	left: 0;
+	width: 100%;
+	text-align: center
+}
+.game-end {
+	margin-left: 105%;
+	width: 200px;
+	text-align: center;
+	z-index: 100;
+	top: 120px;
+}
+/////////////////////////////////////////////////////////////
+// TRANSITIONS
+/////////////////////////////////////////////////////////////
+.checkbox {
+	visibility: hidden
+}
+.checkbox-heading:checked ~ .first-heading{
+	margin-left: 35%;
+	-webkit-transition: margin 1s cubic-bezier(.5, -.5, .3, 1.3) 0s;
+	-moz-transition: margin 1s cubic-bezier(.5, -.5, .3, 1.3) 0s;
+	-o-transition: margin 1s cubic-bezier(.5, -.5, .3, 1.3) 0s;
+	transition: margin 1s cubic-bezier(.5, -.5, .3, 1.3) 0s
+}
+.first-heading {
+	top: 90px;
+	font-size: 16px;
+	font-weight: 500;
+	margin-left: 105%;
+}
+.play-button {
+	margin: 0 auto;
+	font-size: 22px;
+	width: 60px;
+	color: white;
+	padding: 12px 20px 10px;
+	background: -moz-linear-gradient(top, #d40e53 0%, #d40e53);
+	border: 3px solid white;
+	-moz-box-shadow: 0px 3px 11px rgba(235, 23, 103, 0.5), inset 0px 0px 0px rgba(235, 23, 103, 1);
+	-webkit-box-shadow: 0px 3px 11px rgba(235, 23, 103, 0.5), inset 0px 0px 0px rgba(235, 23, 103, 1);
+	box-shadow: 0px 3px 11px rgba(235, 23, 103, 0.5), inset 0px 0px 0px rgba(235, 23, 103, 1);
+	text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.2), 0px 1px 0px rgba(255, 255, 255, 0.3);
+	transition: background .5s;
+	transition: color .1s
+}
+.play-button:hover {
+	cursor: pointer;
+	color: #d40e53;
+	background: -webkit-gradient(linear, left top, left bottom, from(white), to(white));
+	-moz-box-shadow: 0px 3px 11px rgba(235, 23, 103, 0.5), inset 0px 0px 0px rgba(235, 23, 103, 1);
+	-webkit-box-shadow: 0px 3px 11px rgba(235, 23, 103, 0.5), inset 0px 0px 0px rgba(235, 23, 103, 1);
+	box-shadow: 0px 3px 11px rgba(235, 23, 103, 0.5), inset 0px 0px 0px rgba(235, 23, 103, 1);
+	text-shadow: 0px -1px 0px rgba(000, 000, 000, 0.2), 0px 1px 0px rgba(255, 255, 255, 0.3);
+	transition: background .5s;
+	transition: color .1s
+}
+.checkbox-choice:checked ~ .choice-heading {
+  .legend {
+    visibility: visible;
+  }
+  .choose-div {
+    visibility: hidden;
+  }
+}
+.checkbox-first:checked ~ .choice-heading {
+  display: none;
+}
+.choose-first {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+  li {
+    &:hover {
+      border-bottom: 2px solid white;
+      cursor: pointer;
+    }
+    &:nth-child(2) {
+      margin-left: 10px;
+    }
+  }
+}
+.first-p {
+  margin-bottom: 0;
+}
+.choice-heading {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+  width: 30%;
+}

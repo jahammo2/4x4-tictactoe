@@ -1,0 +1,35 @@
+@media screen and (max-width:401px) {
+	body {
+		width: 300px;
+		margin: 0 auto
+	}
+	.header {
+		width: 100%
+	}
+	.board {
+		width: 100%;
+		height: 300px;
+		font-size: 75px
+	}
+	.game-block {
+		height: 75px;
+		padding-top: 17px
+	}
+	.game-block::first-letter {
+		margin-left: 20px
+	}
+	.legend {
+		left: 0;
+		top: 1500%;
+		z-index: 1000
+	}
+	.reset {
+		right: 0
+	}
+	.first-heading {
+		margin-left: 100%
+	}
+	.game-end {
+		margin-left: 120%
+	}
+}
