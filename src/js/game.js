@@ -91,7 +91,7 @@ app.game = function () {
     //  window.setTimeout(function() {
         app.placeMove(num, app.cc);
         $('.game-blocker-checkbox').prop('checked', false);
-        styleOs();
+        // styleOs();
        // app.checkWin()
       //}, 1000);
   }

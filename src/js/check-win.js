@@ -8,7 +8,7 @@ app.checkWin = function () {
         var idNum1 = app.spotArray[num - param];
         var idNum2 = app.spotArray[num + param];
         var idNum3 = app.spotArray[num + (param * 2)];
-        if ((idNum === (idNum1 && idNum2 && idNum3)) && (idNum !== '')) {
+        if ((idNum === idNum1 && idNum2 === idNum && idNum3 === idNum) && (idNum !== '')) {
 
             function changeColor(el) {
                 el.css({
@@ -20,7 +20,7 @@ app.checkWin = function () {
             changeColor($('#' + (num - 1)));
             changeColor($('#' + (num - param - 1)));
             changeColor($('#' + (num + param - 1)));
-            console.log('win');
+            changeColor($('#' + (num + (param * 2) - 1)));
             // app.lose();
             return true;
         }
@@ -43,7 +43,7 @@ app.checkWin = function () {
                 counter += 1;
             }
         };
-        if (counter === 9) {
+        if (counter === 16) {
             return true;
         } else {
             return false;

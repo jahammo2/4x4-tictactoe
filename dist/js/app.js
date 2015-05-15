@@ -12,7 +12,7 @@ app.checkWin = function () {
         var idNum1 = app.spotArray[num - param];
         var idNum2 = app.spotArray[num + param];
         var idNum3 = app.spotArray[num + (param * 2)];
-        if ((idNum === (idNum1 && idNum2 && idNum3)) && (idNum !== '')) {
+        if ((idNum === idNum1 && idNum2 === idNum && idNum3 === idNum) && (idNum !== '')) {
 
             function changeColor(el) {
                 el.css({
@@ -24,7 +24,7 @@ app.checkWin = function () {
             changeColor($('#' + (num - 1)));
             changeColor($('#' + (num - param - 1)));
             changeColor($('#' + (num + param - 1)));
-            console.log('win');
+            changeColor($('#' + (num + (param * 2) - 1)));
             // app.lose();
             return true;
         }
@@ -47,7 +47,7 @@ app.checkWin = function () {
                 counter += 1;
             }
         };
-        if (counter === 9) {
+        if (counter === 16) {
             return true;
         } else {
             return false;
@@ -80,6 +80,7 @@ app.comp = {
 		}
 		if (app.comp.reactVal === false) {
 			app.comp.reactVal = app.comp.randomMove();
+      console.log(app.comp.reactVal);
 		}
     console.log(app.comp.reactVal);
 		return app.comp.reactVal;
@@ -126,7 +127,6 @@ app.comp = {
 			checkRow(0,4,8,12);
 		}
 		if (matched === false) {
-      console.log('here');
 			checkRow(1,5,9,13);
 		}
 		if (matched === false) {
@@ -220,69 +220,20 @@ app.comp = {
 		   } else {
 		     return 6;
        }
+     } else {
+        return false;
      }
 
-
-
-    
-		// if (amt < 2) {
-		// 	if (app.spotArray[4] === '') {
-		// 		return 4;
-		// 	} else {
-		// 		return 0;
-		// 	}
-    //     } else if (amt < 4) {
-    //         if (app.spotArray[8] === hc && app.spotArray[4] === hc && app.spotArray[6] === '') {
-    //             return 6;
-    //         } else if (app.spotArray[1] === hc && app.spotArray[4] === cc && app.spotArray[8] === hc) {
-    //             return 2;
-    //         } else if (app.spotArray[1] === hc && app.spotArray[4] === cc && app.spotArray[6] === hc) {
-    //             return 0;
-    //         } else if (app.spotArray[3] === hc && app.spotArray[4] === cc && app.spotArray[8] === hc) {
-    //             return 6;
-    //         } else if (app.spotArray[3] === hc && app.spotArray[4] === cc && app.spotArray[2] === hc) {
-    //             return 0;
-    //         } else if (app.spotArray[5] === hc && app.spotArray[4] === cc && app.spotArray[0] === hc) {
-    //             return 2;
-    //         } else if (app.spotArray[5] === hc && app.spotArray[4] === cc && app.spotArray[6] === hc) {
-    //             return 8;
-    //         } else if (app.spotArray[7] === hc && app.spotArray[4] === cc && app.spotArray[2] === hc) {
-    //             return 8;
-    //         } else if (app.spotArray[7] === hc && app.spotArray[4] === cc && app.spotArray[0] === hc) {
-    //             return 6;
-    //         } else if (app.spotArray[7] === hc && app.spotArray[4] === cc && app.spotArray[3] === hc) {
-    //             return 6;
-    //         } else if (app.spotArray[7] === hc && app.spotArray[4] === cc && app.spotArray[5] === hc) {
-    //             return 8;
-    //         } else if (app.spotArray[1] === hc && app.spotArray[4] === cc && app.spotArray[3] === hc) {
-    //             return 0;
-    //         } else if (app.spotArray[1] === hc && app.spotArray[4] === cc && app.spotArray[5] === hc) {
-    //             return 2;
-    //         } else if (app.spotArray[0] === hc && app.spotArray[4] === hc && app.spotArray[8] === cc) {
-    //             return 6;
-    //         } else {
-    //         	return false;
-    //         }
-    //     } else if (amt < 6) {
-    //         if (app.spotArray[8] === hc && app.spotArray[4] === hc && app.spotArray[1] === hc && app.spotArray[7] === cc && app.spotArray[6] === '') {
-    //             return 6;
-    //         } else if (app.spotArray[8] === hc && app.spotArray[4] === hc && app.spotArray[3] === hc && app.spotArray[1] === '') {
-    //             return 1;
-    //         } else {
-    //         	return false;
-    //         }
-    //     } else {
-    //     	return false;
-    //     }
 	},
 
 	randomMove: function () {
 		var arr = app.spotArray;
-        for (var i = arr.length - 1; i >= 0; i--) {
-            if (arr[i] === '') {
-                return i;
-            };
+    for (var i = arr.length - 1; i >= 0; i--) {
+        if (arr[i] === '') {
+          console.log(i);
+            return i;
         };
+    };
 	}
 	
 };
@@ -413,7 +364,7 @@ app.game = function () {
     //  window.setTimeout(function() {
         app.placeMove(num, app.cc);
         $('.game-blocker-checkbox').prop('checked', false);
-        styleOs();
+        // styleOs();
        // app.checkWin()
       //}, 1000);
   }
