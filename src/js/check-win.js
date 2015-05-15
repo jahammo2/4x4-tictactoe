@@ -21,7 +21,7 @@ app.checkWin = function () {
             changeColor($('#' + (num - param - 1)));
             changeColor($('#' + (num + param - 1)));
             changeColor($('#' + (num + (param * 2) - 1)));
-            // app.lose();
+            app.lose();
             return true;
         }
     }
