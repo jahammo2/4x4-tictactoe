@@ -89,7 +89,8 @@ body, html, .game-blocker {
 
 body {
   background: #EB1767;
-  color: white; }
+  color: white;
+  overflow: hidden; }
 
 .heading {
   position: absolute; }

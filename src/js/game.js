@@ -1,6 +1,6 @@
 app.game = function () {
 
-	app.spotArray = ['','','','','','','','',''];
+	app.spotArray = ['','','','','','','','','','','','','','','',''];
 
 	var clickedBlock;
 
@@ -24,7 +24,7 @@ app.game = function () {
 			app.cc = 'X';
 		}
     if (app.firstMove === 'comp') {
-			app.compMove(4);
+			app.compMove(5);
 		}
 		return val;
 	}
