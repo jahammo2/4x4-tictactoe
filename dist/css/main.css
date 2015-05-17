@@ -89,7 +89,8 @@ body, html, .game-blocker {
 
 body {
   background: #EB1767;
-  color: white; }
+  color: white;
+  overflow: hidden; }
 
 .heading {
   position: absolute; }
@@ -117,21 +118,25 @@ body {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   width: 400px;
-  height: 400px;
+  height: 500px;
   margin: 160px auto;
   background: white;
   position: relative;
   font-size: 100px; }
 
 .game-block {
-  width: 30%;
-  height: 100px;
+  width: 22%;
+  height: 96px;
   background: #EB1767;
-  padding: 1% .75% 1% 1.25%;
+  padding: 1% 1.25% 1% 1.25%;
   padding-top: 22px; }
 
+.game-block:nth-child(4n) {
+  margin-right: -1px; }
+
 .game-block::first-letter {
-  margin-left: 25px;
+  margin-left: 10px;
+  margin-bottom: 15px;
   vertical-align: text-bottom; }
 
 .bottom-div {

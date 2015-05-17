@@ -1,6 +1,6 @@
 app.game = function () {
 
-	app.spotArray = ['','','','','','','','',''];
+	app.spotArray = ['','','','','','','','','','','','','','','',''];
 
 	var clickedBlock;
 
@@ -24,7 +24,7 @@ app.game = function () {
 			app.cc = 'X';
 		}
     if (app.firstMove === 'comp') {
-			app.compMove(4);
+			app.compMove(5);
 		}
 		return val;
 	}
@@ -32,7 +32,7 @@ app.game = function () {
 	app.humanMove = function (num) {
 		app.placeMove(num, app.hc);
 		if (app.checkWin()) {
-			// app.lose();
+			app.lose();
 		} else {
 			app.compMove(app.comp.react(app.cc, app.hc));
 		}
@@ -42,7 +42,7 @@ app.game = function () {
 	app.compMove = function (num) {
     computerMove(num);
 		if (app.checkWin()) {
-		//	app.lose();
+			app.lose();
 		}
 		return num;
 	};
@@ -88,12 +88,11 @@ app.game = function () {
 
   function computerMove(num) {
       $('.game-blocker-checkbox').prop('checked', true);
-    //  window.setTimeout(function() {
+     window.setTimeout(function() {
         app.placeMove(num, app.cc);
         $('.game-blocker-checkbox').prop('checked', false);
-        styleOs();
-       // app.checkWin()
-      //}, 1000);
+       app.checkWin()
+      }, 1000);
   }
 
   $('.choose-first li').on('click', function () {

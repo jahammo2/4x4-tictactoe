@@ -5,9 +5,11 @@ app.checkWin = function () {
 
 	function checkThree(num, param) {
         var idNum = app.spotArray[num];
-        var idNumLess = app.spotArray[num - param];
-        var idNumMore = app.spotArray[num + param];
-        if ((idNum === idNumLess) && (idNum === idNumMore) && (idNum !== '')) {
+        var idNum1 = app.spotArray[num - param];
+        var idNum2 = app.spotArray[num + param];
+        var idNum3 = app.spotArray[num + (param * 2)];
+        if ((idNum === idNum1 && idNum2 === idNum && idNum3 === idNum) && (idNum !== '')) {
+
             function changeColor(el) {
                 el.css({
                     'background': 'white',
@@ -18,13 +20,13 @@ app.checkWin = function () {
             changeColor($('#' + (num - 1)));
             changeColor($('#' + (num - param - 1)));
             changeColor($('#' + (num + param - 1)));
-            console.log('win');
+            changeColor($('#' + (num + (param * 2) - 1)));
             app.lose();
             return true;
         }
     }
 
-    if (checkThree(1, 1) || checkThree(4, 1) || checkThree(7, 1) || checkThree(3, 3) || checkThree(4, 1) || checkThree(4, 3) || checkThree(7, 3) || checkThree(4, 4) || checkThree(4, 2)) {
+    if (checkThree(1, 1) || checkThree(5, 1) || checkThree(9, 1) || checkThree(13, 1) || checkThree(4, 4) || checkThree(5, 4) || checkThree(6, 4) || checkThree(7, 4) || checkThree(5, 5) || checkThree(6, 3)) {
         // game end functionality
         app.gameOver = true;
         return true;
@@ -41,7 +43,7 @@ app.checkWin = function () {
                 counter += 1;
             }
         };
-        if (counter === 9) {
+        if (counter === 16) {
             return true;
         } else {
             return false;
@@ -53,5 +55,5 @@ app.checkWin = function () {
 };
 
 app.emptyArray = function () {
-	app.spotArray = ['','','','','','','','',''];
+	app.spotArray = ['','','','','','','','','','','','','','','',''];
 }
