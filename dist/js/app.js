@@ -99,13 +99,13 @@ app.comp = {
 		    // console.log(app.spotArray[num + param1]);
 		    // console.log(app.spotArray[num + param2]);
 
-		    if (block === (block1 && block3) && block2 === '' && block !== '') {
+        if (block === block1 && block3 === block && block2 === '' && block !== '') {
 		        matched = param2;
-		    } else if (block === (block2 && block3) && block1 === '' && block !== '') {
+		    } else if (block === block2 && block === block3 && block1 === '' && block !== '') {
 		        matched = param1;
-         } else if (block === (block2 && block1) && block3 === '' && block !== '') {
+         } else if (block === block2 && block === block1 && block3 === '' && block !== '') {
 		        matched = param3;
-		    } else if (block1 === (block2 && block3) && block === '' && block1 !== '') {
+		    } else if (block1 === block2 && block1 === block3 && block === '' && block1 !== '') {
 		        matched = num;
 		    } else {
 		    	matched = false;
